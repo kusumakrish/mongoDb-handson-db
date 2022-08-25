@@ -199,3 +199,25 @@ db.employee.insertOne({"firstName": "John",   "lastName": "Doe",   "salary": "25
         "yearGrad" : "2019",
         "gradStream" : "EEE"
 }
+
+ db.employee.find({salary:{$gt:"30000"}})
+{ "_id" : ObjectId("630749d92d8c812f1412aafa"), "firstName" : "Jame", "lastName" : "Doe", "salary" : "35000", "department" : "Accounts", "lastCompany" : "Z", "lastSalary" : "20000", "overallExp" : "1", "contactInfo" : "123567890", "yearGrad" : "2019", "gradStream" : "ECE" }
+{ "_id" : ObjectId("63074ae22d8c812f1412aafc"), "firstName" : "Jame", "lastName" : "roh", "salary" : "35000", "department" : "Accounts", "lastCompany" : "Z", "lastSalary" : "15000", "overallExp" : "2", "contactInfo" : "123567890", "yearGrad" : "2019", "gradStream" : "EEE" }
+{ "_id" : ObjectId("63074ae22d8c812f1412aafe"), "firstName" : "Jame", "lastName" : "Doe", "salary" : "35000", "department" : "Accounts", "lastCompany" : "Z", "lastSalary" : "20000", "overallExp" : "1", "contactInfo" : "123567890", "yearGrad" : "2019", "gradStream" : "ECE" }
+{ "_id" : ObjectId("63074ae22d8c812f1412ab00"), "firstName" : "Jame", "lastName" : "Doe", "salary" : "35000", "department" : "Accounts", "lastCompany" : "Z", "lastSalary" : "15000", "overallExp" : "2", "contactInfo" : "123567890", "yearGrad" : "2019", "gradStream" : "EEE" }
+{ "_id" : ObjectId("63074ae22d8c812f1412ab02"), "firstName" : "Jame", "lastName" : "Doe", "salary" : "35000", "department" : "Accounts", "lastCompany" : "Z", "lastSalary" : "20000", "overallExp" : "1", "contactInfo" : "123567890", "yearGrad" : "2019", "gradStream" : "ECE" }
+{ "_id" : ObjectId("63074ae22d8c812f1412ab04"), "firstName" : "Jame", "lastName" : "Doe", "salary" : "35000", "department" : "Accounts", "lastCompany" : "Z", "lastSalary" : "15000", "overallExp" : "2", "contactInfo" : "123567890", "yearGrad" : "2019", "gradStream" : "EEE" }
+
+> db.employee.find({overallExp:{$gt:2}})
+
+> db.employee.find({yearGrad:{$gt:"2015"},overallExp:{$gt:"1"}})
+{ "_id" : ObjectId("630748e02d8c812f1412aaf8"), "firstName" : "John", "lastName" : "Doe", "salary" : "25000", "department" : "HR", "lastCompany" : "X", "lastSalary" : "10000", "overallExp" : "2", "contactInfo" : "1234567890", "yearGrad" : "2016", "gradStream" : "CSE" }
+{ "_id" : ObjectId("63074ae22d8c812f1412aafc"), "firstName" : "Jame", "lastName" : "roh", "salary" : "35000", "department" : "Accounts", "lastCompany" : "Z", "lastSalary" : "15000", "overallExp" : "2", "contactInfo" : "123567890", "yearGrad" : "2019", "gradStream" : "EEE" }
+{ "_id" : ObjectId("63074ae22d8c812f1412ab00"), "firstName" : "Jame", "lastName" : "Doe", "salary" : "35000", "department" : "Accounts", "lastCompany" : "Z", "lastSalary" : "15000", "overallExp" : "2", "contactInfo" : "123567890", "yearGrad" : "2019", "gradStream" : "EEE" }
+{ "_id" : ObjectId("63074ae22d8c812f1412ab04"), "firstName" : "Jame", "lastName" : "Doe", "salary" : "35000", "department" : "Accounts", "lastCompany" : "Z", "lastSalary" : "15000", "overallExp" : "2", "contactInfo" : "123567890", "yearGrad" : "2019", "gradStream" : "EEE" }
+> db.employee.updateMany({salary:"70000"},{$set:{salary:"65000"}})
+
+> db.employee.deleteMany({lastCompany:"Y"})
+{ "acknowledged" : true, "deletedCount" : 6 }
+>
+{ "acknowledged" : true, "matchedCount" : 0, "modifiedCount" : 0 }
