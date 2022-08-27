@@ -2,12 +2,16 @@ const MongoClient = require("mongodb").MongoClient;
 
 const url = "mongodb://127.0.0.1:27017/students"
 
+//connection to database
+
 MongoClient.connect(url, async (err,db)=>{
   if(err) console.log(err);
   console.log("Db connected");
   const database = db.db("Human_resource")
+  
+  //creating collection
+  
   const dbCollection = database.collection("employee")
-    // console.log("collection created",dbCollection);
     const stu =[{"firstName": "John",
     "lastName": "Doe",
     "salary": "25000",
@@ -162,30 +166,49 @@ MongoClient.connect(url, async (err,db)=>{
   "yearGrad": "2019",
   "gradStream": "EEE"
 }]
+    
+    //inserting documents into collection
+    
     dbCollection.insertMany(stu,(err,res)=>{
       if(err) console.log(err)
       console.log(" document inserted");
     })
+  
+  //Display documents
+  
     dbCollection.find({}).toArray((err,result)=>{
       console.log(result);
     });
+  
+  //salary graterthan 30000
+  
     const salgt = {salary:{$gt:"30000"}}
     dbCollection.find(salgt).toArray((err,result)=>{
       console.log(result);
     });
+  
+  //experience graterthan 2
     const expgt = {overallExp:{$gt:"2"}}
     dbCollection.find(expgt).toArray((err,result)=>{
         console.log(result);
      })
+  
+  //graduate year grater than 2015 
         const gragt = {yearGrad:{$gt:"2015"}}
         dbCollection.find(gragt).toArray((err,result)=>{
             console.log(result);
         })
+  
+  //salary update 70000-65000
+  
         const salup = {salary:{$gt:"70000"}}
         const valup = {$set:{salary:"65000"}}
         dbCollection.updateMany(salup,valup , (err,result)=>{
             console.log(result);
         })
+  
+  //delete document from the collection
+  
         const emdel = {lastCompany:"Y"};
         dbCollection.deleteMany(emdel , (err,obj)=>{
               console.log(obj);
