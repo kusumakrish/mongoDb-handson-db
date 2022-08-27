@@ -194,7 +194,7 @@ MongoClient.connect(url, async (err,db)=>{
      })
   
   //graduate year grater than 2015 
-        const gragt = {yearGrad:{$gt:"2015"}}
+         const gragt = {yearGrad:{$gt:"2015"},overallExp:{$gt:"1"}}
         dbCollection.find(gragt).toArray((err,result)=>{
             console.log(result);
         })
